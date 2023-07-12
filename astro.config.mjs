@@ -16,4 +16,6 @@ export default defineConfig({
   ],
   output: "server",
   adapter: vercel(),
+  site: "https://falan-six.vercel.app",
+  compressHTML: true,
 });
