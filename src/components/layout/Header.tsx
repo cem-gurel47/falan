@@ -13,7 +13,7 @@ const MENU_ITEMS = [
   },
   {
     name: "İletişim",
-    link: "/iletişim",
+    link: "/iletisim",
   },
 ];
 
