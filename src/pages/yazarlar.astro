@@ -1,0 +1,12 @@
+---
+import Layout from "../layouts/Layout.astro";
+import AuthorSearchSection from "@/components/sections/AuthorSearchSection";
+import AuthorsSection from "@/components/sections/AuthorsGrid";
+---
+
+<Layout title="Yazarlar" pathname="/yazarlar">
+  <main class="px-12">
+    <AuthorSearchSection client:only />
+    <AuthorsSection client:load />
+  </main>
+</Layout>
