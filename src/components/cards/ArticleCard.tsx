@@ -9,7 +9,11 @@ const ArticleCard = ({ article }: Props) => {
     article;
   return (
     <article className="flex flex-col items-start justify-between">
-      <a href={`/yazilar/${id}`} className="w-full">
+      <a
+        href={`/yazilar/${id}`}
+        className="w-full"
+        aria-label={`Su blogu okuyun:${title}`}
+      >
         <div className="relative w-full">
           <img
             src={imageUrl}
