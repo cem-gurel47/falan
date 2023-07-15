@@ -1,15 +1,12 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Card from "../components/Card.astro";
+import MagazineHero from "@/components/sections/MagazineHero";
+import MagazineGrid from "@/components/sections/MagazineGrid";
 ---
 
 <Layout title="Welcome to Astro." pathname="/dergi">
-  <main>
-    <h1>Welcome to <span class="text-gradient">Falan Dergi</span></h1>
-    <p class="instructions">
-      To get started, open the directory <code>src/pages</code> in your project.<br
-      />
-      <strong>Code Challenge:</strong> Tweak the "Welcome to Astro" message above.
-    </p>
+  <main class="px-24">
+    <MagazineHero />
+    <MagazineGrid />
   </main>
 </Layout>

@@ -1,0 +1,35 @@
+---
+import Layout from "../../layouts/Layout.astro";
+export const prerender = true;
+
+export function getStaticPaths() {
+  return [
+    {
+      params: {
+        authorId: "1",
+      },
+    },
+    {
+      params: {
+        authorId: "2",
+      },
+    },
+    {
+      params: {
+        authorId: "3",
+      },
+    },
+    {
+      params: {
+        authorId: "4",
+      },
+    },
+  ];
+}
+
+const { authorId } = Astro.params;
+---
+
+<Layout title="Yazarlar" pathname="/yazarlar">
+  <p>{authorId}</p>
+</Layout>
