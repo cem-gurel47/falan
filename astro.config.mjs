@@ -14,7 +14,7 @@ export default defineConfig({
       serviceEntryPoint: "@astrojs/image/sharp",
     }),
   ],
-  output: "static",
+  output: "hybrid",
   adapter: vercel(),
   site: "https://falan-six.vercel.app",
   compressHTML: true,
