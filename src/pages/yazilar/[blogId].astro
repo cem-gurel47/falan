@@ -1,0 +1,26 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { contentfulClient } from "../../lib/contentful";
+
+export async function getStaticPaths() {
+  const blogs = await contentfulClient.getEntries({
+    content_type: "article",
+  });
+
+  const items = blogs.items.map((item) => {
+    return {
+      params: {
+        blogId: item.sys.id,
+      },
+    };
+  });
+
+  return items;
+}
+
+const { blogId } = Astro.params;
+---
+
+<Layout title="Yazarlar" pathname="/yazarlar">
+  <p>{blogId}</p>
+</Layout>
