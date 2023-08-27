@@ -1,7 +1,30 @@
-export type Author = {
-  id: string;
-  name: string;
-  imageUrl: string;
-  bio: string;
-  articleCount: number;
-};
+import type { Asset } from "contentful";
+
+export interface Author {
+  fields: {
+    name: string;
+    biography: string;
+    image: Asset;
+  };
+  metadata: {};
+  sys: {
+    id: string;
+    updatedAt: string;
+    createdAt: string;
+  };
+}
+
+export interface ContentfulResponse {
+  limit: number;
+  skip: number;
+  total: number;
+  items: {
+    fields: {
+      name: string;
+      biography: string;
+      image: Asset;
+    };
+    metadata: {};
+    sys: {};
+  }[];
+}

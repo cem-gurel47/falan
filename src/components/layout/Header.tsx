@@ -4,8 +4,8 @@ interface Props {
 
 const MENU_ITEMS = [
   {
-    name: "Dergi",
-    link: "/dergi",
+    name: "Dergiler",
+    link: "/dergiler",
   },
   {
     name: "Yazarlar",

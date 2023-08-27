@@ -5,10 +5,10 @@ import CarouselItem from "./CarouselItem";
 import CarouselArrowButton from "./CarouselArrowButton";
 import { useState } from "react";
 
-import type { Article } from "@/types/article";
+import type { Blog } from "@/types/blog";
 
 type Props = {
-  data: Article[];
+  data: Blog[];
 };
 
 const CarouselComponent = ({ data }: Props) => {
@@ -49,18 +49,18 @@ const CarouselComponent = ({ data }: Props) => {
         }
       >
         <div className="grid grid-cols-1 sm:grid-cols-3">
-          {data.map((article) => (
-            <CarouselItem key={article.id} article={article} />
+          {data.map((blog) => (
+            <CarouselItem key={blog.sys.id} blog={blog} />
           ))}
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-3">
-          {data.map((article) => (
-            <CarouselItem key={article.id} article={article} />
+          {data.map((blog) => (
+            <CarouselItem key={blog.sys.id} blog={blog} />
           ))}
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-3">
-          {data.map((article) => (
-            <CarouselItem key={article.id} article={article} />
+          {data.map((blog) => (
+            <CarouselItem key={blog.sys.id} blog={blog} />
           ))}
         </div>
       </Carousel>

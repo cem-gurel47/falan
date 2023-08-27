@@ -2,61 +2,19 @@
 import Layout from "@/layouts/Layout.astro";
 import Carousel from "@/components/carousel/Carousel";
 import BlogsGrid from "@/components/sections/BlogsGrid";
-export const prerender = true;
+import { contentfulClient } from "@/lib/contentful";
 
-const author = {
-  id: "1",
-  name: "John Doe",
-  imageUrl: "https://avatars.dicebear.com/api/avataaars/2.svg",
-  bio: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptas.",
-  articleCount: 5,
-};
+const blogs = await contentfulClient.getEntries({
+  content_type: "blogPage",
+});
+
+export const prerender = true;
 ---
 
 <Layout title="Falan Dergi" pathname="/">
   <main>
-    <Carousel
-      client:load
-      data={[
-        {
-          id: "1",
-          author: author,
-          title:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptas.",
-          date: new Date().toDateString(),
-          readTime: 5,
-          imageUrl: "https://picsum.photos/400/400/?random&dummyParam=1",
-          category: "Lorem ipsum",
-          content:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptas.",
-        },
-        {
-          id: "2",
-          author: author,
-          title:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptas.",
-          date: new Date().toDateString(),
-          readTime: 5,
-          imageUrl: "https://picsum.photos/400/400/?random&dummyParam=2",
-          category: "Lorem ipsum",
-          content:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptas.",
-        },
-
-        {
-          id: "3",
-          author: author,
-          title:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptas.",
-          date: new Date().toDateString(),
-          readTime: 5,
-          imageUrl: "https://picsum.photos/400/400/?random&dummyParam=3",
-          category: "Lorem ipsum",
-          content:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptas.",
-        },
-      ]}
-    />
+    <!-- @ts-ignore -->
+    <Carousel client:load data={blogs.items} />
     <div class="pt-12 px-4 sm:px-4 md:px-12 lg:px-24">
       <div class="relative px-24">
         <div class="absolute inset-0 flex items-center" aria-hidden="true">
@@ -64,13 +22,14 @@ const author = {
         </div>
         <div class="relative flex justify-center">
           <h2
-            class="bg-white px-3 font-semibold leading-6 text-gray-900 text-3xl"
+            class="bg-white px-3 font-semibold leading-8 text-gray-900 text-3xl text-center"
           >
             En cok okunanlar
           </h2>
         </div>
       </div>
-      <BlogsGrid />
+      <!-- @ts-ignore -->
+      <BlogsGrid blogs={blogs.items} />
     </div>
   </main>
 </Layout>

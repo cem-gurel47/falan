@@ -1,9 +1,8 @@
 import { defineConfig } from "astro/config";
 import react from "@astrojs/react";
 import tailwind from "@astrojs/tailwind";
-import vercel from "@astrojs/vercel/serverless";
-
 import image from "@astrojs/image";
+import netlify from "@astrojs/netlify/functions";
 
 // https://astro.build/config
 export default defineConfig({
@@ -15,7 +14,9 @@ export default defineConfig({
     }),
   ],
   output: "hybrid",
-  adapter: vercel(),
-  site: "https://falan-six.vercel.app",
+  adapter: netlify(),
   compressHTML: true,
+  server: {
+    host: "0.0.0.0",
+  },
 });

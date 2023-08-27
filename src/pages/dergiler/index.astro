@@ -1,0 +1,21 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import MagazineHero from "../../components/sections/MagazineHero";
+import MagazineGrid from "../../components/sections/MagazineGrid";
+import { contentfulClient } from "../../lib/contentful";
+// import type { ContentfulResponse } from "@/types/magazine";
+
+// @ts-ignore
+const magazines = await contentfulClient.getEntries({
+  content_type: "magazine",
+});
+export const prerender = true;
+---
+
+<Layout title="Dergiler" pathname="/dergiler">
+  <main class="px-24">
+    <MagazineHero />
+    <!-- @ts-ignore -->
+    <MagazineGrid magazines={magazines} />
+  </main>
+</Layout>

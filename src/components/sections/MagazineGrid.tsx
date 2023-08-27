@@ -1,6 +1,11 @@
 import MagazineCard from "../cards/MagazineCard";
+import type { ContentfulResponse, Magazine } from "@/types/magazine";
 
-const MagazineGrid = () => {
+type Props = {
+  magazines: ContentfulResponse;
+};
+
+const MagazineGrid = ({ magazines }: Props) => {
   return (
     <section className="mt-12">
       <div className="inline-flex flex-col">
@@ -11,16 +16,8 @@ const MagazineGrid = () => {
         <div className="h-[6px] bg-black w-1/2"></div>
       </div>
       <div className=" grid grid-cols-5 py-12 gap-20">
-        {new Array(20).fill(0).map((_, index) => (
-          <MagazineCard
-            key={index}
-            magazine={{
-              id: index.toString(),
-              title: "FALAN DERGİ",
-              coverUrl: `https://picsum.photos/302/362/?random&dummyParam=${index}`,
-              date: new Date(),
-            }}
-          />
+        {magazines.items.map((magazine: Magazine) => (
+          <MagazineCard key={magazine.sys.id} magazine={magazine} />
         ))}
       </div>
     </section>
