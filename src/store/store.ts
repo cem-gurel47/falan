@@ -1,4 +1,5 @@
 import { atom } from "nanostores";
+import type { Content } from "@/types/content";
 
 //author page
 export const authorFilter = atom("");
@@ -8,4 +9,4 @@ export const magazineYearFilter = atom(null);
 
 export const tempAuthor = atom(null);
 
-export const currentMagazine = atom(null);
+export const content = atom<null | Content>(null);

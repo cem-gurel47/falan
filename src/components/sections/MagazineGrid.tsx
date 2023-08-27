@@ -15,9 +15,13 @@ const MagazineGrid = ({ magazines }: Props) => {
         </h3>
         <div className="h-[6px] bg-black w-1/2"></div>
       </div>
-      <div className=" grid grid-cols-5 py-12 gap-20">
-        {magazines.items.map((magazine: Magazine) => (
-          <MagazineCard key={magazine.sys.id} magazine={magazine} />
+      <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 py-12 gap-20 ">
+        {magazines.items.map((magazine: Magazine, index) => (
+          <MagazineCard
+            key={magazine.sys.id}
+            magazine={magazine}
+            index={index + 1}
+          />
         ))}
       </div>
     </section>

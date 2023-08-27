@@ -1,35 +1,51 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import Carousel from "@/components/carousel/Carousel";
+import { content } from "@/store/store";
+import type { Content } from "@/types/content";
+
+// import Carousel from "@/components/carousel/Carousel";
 import BlogsGrid from "@/components/sections/BlogsGrid";
+import HeroSection from "@/components/sections/HeroSection";
 import { contentfulClient } from "@/lib/contentful";
 
-const blogs = await contentfulClient.getEntries({
+const blogsPromise = contentfulClient.getEntries({
   content_type: "blogPage",
 });
+
+const siteContentPromise = contentfulClient.getEntries({
+  content_type: "siteContent",
+});
+
+const [blogs, siteContent] = await Promise.all([
+  blogsPromise,
+  siteContentPromise,
+]);
+
+// @ts-ignore
+const contentValue: Content = siteContent.items[0];
+
+// @ts-ignore
+content.set(contentValue);
 
 export const prerender = true;
 ---
 
 <Layout title="Falan Dergi" pathname="/">
   <main>
-    <!-- @ts-ignore -->
-    <Carousel client:load data={blogs.items} />
-    <div class="pt-12 px-4 sm:px-4 md:px-12 lg:px-24">
-      <div class="relative px-24">
-        <div class="absolute inset-0 flex items-center" aria-hidden="true">
-          <div class="w-full border-t border-gray-300"></div>
-        </div>
-        <div class="relative flex justify-center">
-          <h2
-            class="bg-white px-3 font-semibold leading-8 text-gray-900 text-3xl text-center"
-          >
-            En cok okunanlar
-          </h2>
-        </div>
+    <HeroSection content={contentValue} />
+    <div class="relative px-24">
+      <div class="absolute inset-0 flex items-center" aria-hidden="true">
+        <div class="w-full border-t border-gray-300"></div>
       </div>
-      <!-- @ts-ignore -->
-      <BlogsGrid blogs={blogs.items} />
+      <div class="relative flex justify-center">
+        <h2
+          class="bg-white px-3 font-semibold leading-8 text-gray-900 text-3xl text-center"
+        >
+          En cok okunanlar
+        </h2>
+      </div>
     </div>
+    <!-- @ts-ignore -->
+    <BlogsGrid blogs={blogs.items} />
   </main>
 </Layout>
