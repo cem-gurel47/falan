@@ -4,7 +4,7 @@ import { contentfulClient } from "../../lib/contentful";
 
 export async function getStaticPaths() {
   const blogs = await contentfulClient.getEntries({
-    content_type: "article",
+    content_type: "blog",
   });
 
   const items = blogs.items.map((item) => {
