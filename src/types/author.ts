@@ -5,6 +5,8 @@ export interface Author {
     name: string;
     biography: string;
     image: Asset;
+    twitterUrl?: string;
+    linkedinUrl?: string;
   };
   metadata: {};
   sys: {

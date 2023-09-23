@@ -11,8 +11,6 @@ type Props = {
 export default function AuthorsSection({ authors }: Props) {
   const $authorFilter = useStore(authorFilter);
 
-  console.log(authors);
-
   return (
     <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 w-full gap-12 py-12">
       {authors

@@ -12,7 +12,7 @@ type Props = {
 
 const CarouselItem = ({ blog }: Props) => {
   const { fields, sys } = blog;
-  const { title, category, readTime, image } = fields;
+  const { title, category, readTimeAsMinutes, image } = fields;
   const { createdAt, id } = sys;
   return (
     <div className="col-span-1 relative group">
@@ -33,7 +33,7 @@ const CarouselItem = ({ blog }: Props) => {
         </a>
         <div className="flex justify-center items-center py-8 gap-4 text-gray-400 text-xs font-medium">
           <p>{createdAt}</p>
-          <p>{readTime} dk.</p>
+          <p>{readTimeAsMinutes} dk.</p>
         </div>
         <a
           href={`/yazilar/${id}`}
