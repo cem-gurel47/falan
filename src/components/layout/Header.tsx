@@ -1,3 +1,17 @@
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+import { useEffect } from "react";
+
+const firebaseConfig = {
+  apiKey: import.meta.env.FIREBASE_API_KEY,
+  authDomain: import.meta.env.FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.FIREBASE_APP_ID,
+  measurementId: import.meta.env.FIREBASE_MEASURMENT_ID,
+};
+
 interface Props {
   pathname: string;
 }
@@ -18,6 +32,11 @@ const MENU_ITEMS = [
 ];
 
 const Header = ({ pathname }: Props) => {
+  useEffect(() => {
+    const app = initializeApp(firebaseConfig);
+    getAnalytics(app);
+  }, []);
+
   return (
     <header className="w-full bg-white">
       <div className="h-10 bg-black" />

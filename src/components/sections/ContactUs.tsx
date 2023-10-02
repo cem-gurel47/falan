@@ -1,11 +1,64 @@
-import { MailIcon } from "lucide-react";
+import { Loader2 } from "lucide-react";
+import { useState } from "react";
+import SuccessNotification from "@/components/notifications/Success";
+import { createClient } from "contentful-management";
+
+const client = createClient({
+  accessToken: "CFPAT-HFbSxUqB9ilfMa10px3wPyTlkZRtf6msD_XvMljqlz4",
+});
+
+const spaceId = "zy6rsxnydh8b";
+const environmentId = "master"; // Usually 'master', but could be different
 
 export default function Example() {
+  const [loading, setLoading] = useState(false);
+  const [successMessageVisible, setSuccessMessageVisible] = useState(false);
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const data = Object.fromEntries(formData.entries());
+
+    try {
+      setLoading(true);
+      const space = await client.getSpace(spaceId);
+      const environment = await space.getEnvironment(environmentId);
+
+      await environment.createEntry("contact", {
+        fields: {
+          // Define your entry fields here
+          firstName: {
+            "en-US": data["first-name"],
+          },
+          lastName: {
+            "en-US": data["last-name"],
+          },
+          email: {
+            "en-US": data["email"],
+          },
+          message: {
+            "en-US": data["message"],
+          },
+        },
+      });
+
+      setSuccessMessageVisible(true);
+      setLoading(false);
+    } catch (e) {
+      console.log(e);
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="relative isolate bg-white">
       <div className="mx-auto grid max-w-7xl grid-cols-1 lg:grid-cols-2">
         <div className="relative px-6 pb-12 pt-12 sm:pt-8 lg:static lg:px-8 lg:py-12">
           <div className="mx-auto max-w-xl lg:mx-0 lg:max-w-lg">
+            <SuccessNotification
+              show={successMessageVisible}
+              setShow={setSuccessMessageVisible}
+            />
             <h2 className="text-3xl font-bold tracking-tight text-gray-900">
               Bizimle iletişime geçin
             </h2>
@@ -46,28 +99,27 @@ export default function Example() {
                 </dd>
               </div> */}
               <div className="flex gap-x-4">
-                <dt className="flex-none">
+                {/* <dt className="flex-none">
                   <span className="sr-only">Email</span>
                   <MailIcon
                     className="h-7 w-6 text-gray-400"
                     aria-hidden="true"
                   />
-                </dt>
-                <dd>
+                </dt> */}
+                {/* <dd>
                   <a
                     className="hover:text-gray-900"
                     href="mailto:hello@example.com"
                   >
                     merhaba@falan.com
                   </a>
-                </dd>
+                </dd> */}
               </div>
             </dl>
           </div>
         </div>
         <form
-          action="#"
-          method="POST"
+          onSubmit={onSubmit}
           className="px-6 pb-24 pt-0 sm:pb-32 lg:px-8 lg:py-12"
         >
           <div className="mx-auto max-w-xl lg:mr-0 lg:max-w-lg">
@@ -149,9 +201,10 @@ export default function Example() {
             <div className="mt-8 flex justify-end">
               <button
                 type="submit"
-                className="rounded-md bg-black px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:opacity-70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                className="flex rounded-md bg-black px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:opacity-70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
-                Mesaj Gönder
+                Mesaj Gönder{" "}
+                {loading && <Loader2 className="animate-spin ml-2" size={20} />}
               </button>
             </div>
           </div>
