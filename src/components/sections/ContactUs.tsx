@@ -1,7 +1,9 @@
 import { Loader2 } from "lucide-react";
 import { useState } from "react";
 import SuccessNotification from "@/components/notifications/Success";
-const { createClient } = require("contentful-management");
+import contentfulManagement from "contentful-management";
+
+const { createClient } = contentfulManagement;
 
 const client = createClient({
   accessToken: "CFPAT-HFbSxUqB9ilfMa10px3wPyTlkZRtf6msD_XvMljqlz4",
