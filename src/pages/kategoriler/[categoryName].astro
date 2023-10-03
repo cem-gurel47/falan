@@ -6,7 +6,17 @@ import type { Blog } from "@/types/blog";
 import BlogsGrid from "@/components/sections/BlogsGrid";
 
 export async function getStaticPaths() {
-  const categories = ["Felsefe", "Spor", "Edebiyat"];
+  const categories = [
+    "Felsefe",
+    "Spor",
+    "Edebiyat",
+    "Psikoloji",
+    "Oyun",
+    "Sinema",
+    "Bilim",
+    "Öykü",
+    "Ekonomi",
+  ];
 
   const items = categories.map((category) => {
     return {
