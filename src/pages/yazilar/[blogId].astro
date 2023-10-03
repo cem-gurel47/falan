@@ -44,7 +44,11 @@ const readTimeAsMinutes = blog.fields.readTimeAsMinutes;
               >
                 {blog.fields.title}
               </h1>
-              <HTMLTextRenderer content={blog.fields.content} />
+              <HTMLTextRenderer
+                content={blog.fields.content}
+                blogId={blogId as string}
+                client:load
+              />
             </div>
           </div>
         </div>

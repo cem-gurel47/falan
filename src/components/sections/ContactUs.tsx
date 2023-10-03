@@ -6,11 +6,11 @@ import contentfulManagement from "contentful-management";
 const { createClient } = contentfulManagement;
 
 const client = createClient({
-  accessToken: "CFPAT-HFbSxUqB9ilfMa10px3wPyTlkZRtf6msD_XvMljqlz4",
+  accessToken: import.meta.env.PUBLIC_CONTENTFUL_ACCESS_TOKEN,
 });
 
-const spaceId = "zy6rsxnydh8b";
-const environmentId = "master"; // Usually 'master', but could be different
+const spaceId = import.meta.env.PUBLIC_CONTENTFUL_SPACE_ID;
+const environmentId = "master";
 
 export default function Example() {
   const [loading, setLoading] = useState(false);
