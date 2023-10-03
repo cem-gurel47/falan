@@ -24,7 +24,6 @@ const HTMLTextRenderer = ({ content, blogId, readCount }: Props) => {
       const space = await client.getSpace(spaceId);
       const environment = await space.getEnvironment(environmentId);
       const entry = await environment.getEntry(blogId);
-      console.log(entry.fields.readCount);
       entry.fields.readCount = {
         "en-US": entry.fields.readCount["en-US"] + 1,
       };

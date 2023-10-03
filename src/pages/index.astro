@@ -9,15 +9,24 @@ import { contentfulClient } from "@/lib/contentful";
 
 const blogsPromise = contentfulClient.getEntries({
   content_type: "blogPage",
+  order: `-fields.readCount`,
+  limit: 6,
+});
+
+const mostRecentBlogsPromise = contentfulClient.getEntries({
+  content_type: "blogPage",
+  // order: `-fields.sys.createdAt`,
+  limit: 6,
 });
 
 const siteContentPromise = contentfulClient.getEntries({
   content_type: "siteContent",
 });
 
-const [blogs, siteContent] = await Promise.all([
+const [blogs, siteContent, mostRecentBlogs] = await Promise.all([
   blogsPromise,
   siteContentPromise,
+  mostRecentBlogsPromise,
 ]);
 
 // @ts-ignore
@@ -33,6 +42,20 @@ export const prerender = true;
   <main>
     <HeroSection content={contentValue} />
     <div class="relative px-24">
+      <div class="absolute inset-0 flex items-center" aria-hidden="true">
+        <div class="w-full border-t border-gray-300"></div>
+      </div>
+      <div class="relative flex justify-center">
+        <h2
+          class="bg-white px-3 font-semibold leading-8 text-gray-900 text-3xl text-center"
+        >
+          En son eklenenler
+        </h2>
+      </div>
+    </div>
+    <!-- @ts-ignore -->
+    <BlogsGrid blogs={mostRecentBlogs.items} />
+    <div class="relative px-24 mt-4">
       <div class="absolute inset-0 flex items-center" aria-hidden="true">
         <div class="w-full border-t border-gray-300"></div>
       </div>
