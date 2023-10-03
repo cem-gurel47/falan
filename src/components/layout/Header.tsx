@@ -22,9 +22,14 @@ const MENU_ITEMS = [
     link: "/dergiler",
   },
   {
+    name: "Yazılar",
+    link: "/yazilar",
+  },
+  {
     name: "Yazarlar",
     link: "/yazarlar",
   },
+
   {
     name: "İletişim",
     link: "/iletisim",

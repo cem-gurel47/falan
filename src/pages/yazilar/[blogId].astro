@@ -2,7 +2,7 @@
 import Layout from "../../layouts/Layout.astro";
 import { contentfulClient } from "../../lib/contentful";
 import HTMLTextRenderer from "../../components/sections/HTMLTextRenderer";
-import AuthorCard from "@/components/cards/AuthorCard";
+
 import type { Blog } from "@/types/Blog";
 export async function getStaticPaths() {
   const blogs = await contentfulClient.getEntries({
