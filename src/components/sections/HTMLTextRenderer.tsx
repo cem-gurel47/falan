@@ -14,7 +14,6 @@ const environmentId = "master";
 type Props = {
   content: any;
   blogId: string;
-  readCount: number;
 };
 
 const HTMLTextRenderer = ({ content, blogId, readCount }: Props) => {
@@ -25,8 +24,9 @@ const HTMLTextRenderer = ({ content, blogId, readCount }: Props) => {
       const space = await client.getSpace(spaceId);
       const environment = await space.getEnvironment(environmentId);
       const entry = await environment.getEntry(blogId);
+      console.log(entry.fields.readCount);
       entry.fields.readCount = {
-        "en-US": readCount + 1,
+        "en-US": entry.fields.readCount["en-US"] + 1,
       };
 
       await entry.update();
