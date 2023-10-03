@@ -38,7 +38,7 @@ const blogs = await contentfulClient.getEntries({
 });
 ---
 
-<Layout title="Yazarlar" pathname="/yazarlar">
+<Layout title={`${categoryName}`} pathname="/yazarlar">
   <main class="">
     <div
       class="flex flex-col px-6 md:px-6 lg:px-12 xl:px-24 w-full text-center sm:text-left"
