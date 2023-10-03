@@ -20,7 +20,7 @@ const { title, pathname } = Astro.props;
     <title>{title}</title>
   </head>
   <body>
-    <Header pathname={pathname} client:load />
+    <Header pathname={pathname} />
     <slot />
   </body>
 </html>
