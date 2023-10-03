@@ -26,6 +26,7 @@ const blog: Blog = await contentfulClient.getEntry(blogId as string);
 const author = blog.fields.author;
 const createdAt = blog.sys.createdAt;
 const readTimeAsMinutes = blog.fields.readTimeAsMinutes;
+const readCount = blog.fields.readCount;
 ---
 
 <Layout title="Yazarlar" pathname="/yazarlar">
@@ -47,6 +48,7 @@ const readTimeAsMinutes = blog.fields.readTimeAsMinutes;
               <HTMLTextRenderer
                 content={blog.fields.content}
                 blogId={blogId as string}
+                readCount={readCount}
                 client:load
               />
             </div>

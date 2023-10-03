@@ -14,9 +14,10 @@ const environmentId = "master";
 type Props = {
   content: any;
   blogId: string;
+  readCount: number;
 };
 
-const HTMLTextRenderer = ({ content, blogId }: Props) => {
+const HTMLTextRenderer = ({ content, blogId, readCount }: Props) => {
   useEffect(() => {
     // update the readCount to readCount+1
 
@@ -24,7 +25,7 @@ const HTMLTextRenderer = ({ content, blogId }: Props) => {
       const space = await client.getSpace(spaceId);
       const environment = await space.getEnvironment(environmentId);
       const entry = await environment.getEntry(blogId);
-      entry.fields.readCount = entry.fields.readCount + 1;
+      entry.fields.readCount = readCount + 1;
 
       await entry.update();
     };

@@ -8,6 +8,7 @@ export type Blog = {
     image: Asset;
     category: string;
     author: Author;
+    readCount: number;
     content: any;
   };
   metadata: {};
