@@ -15,7 +15,7 @@ const blogsPromise = contentfulClient.getEntries({
 
 const mostRecentBlogsPromise = contentfulClient.getEntries({
   content_type: "blogPage",
-  // order: `-fields.sys.createdAt`,
+  order: `-.sys.createdAt`,
   limit: 6,
 });
 
