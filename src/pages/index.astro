@@ -9,13 +9,13 @@ import { contentfulClient } from "@/lib/contentful";
 
 const blogsPromise = contentfulClient.getEntries({
   content_type: "blogPage",
-  order: `-fields.readCount`,
+  order: [`-fields.readCount`],
   limit: 6,
 });
 
 const mostRecentBlogsPromise = contentfulClient.getEntries({
   content_type: "blogPage",
-  order: `-.sys.createdAt`,
+  order: [`-sys.createdAt`],
   limit: 6,
 });
 
