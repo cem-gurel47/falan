@@ -1,5 +1,6 @@
 ---
 import Header from "../components/layout/Header";
+import Footer from "../components/layout/Footer";
 import "@fontsource-variable/heebo";
 export interface Props {
   title: string;
@@ -24,6 +25,7 @@ const { title, pathname } = Astro.props;
   <body>
     <Header pathname={pathname} client:idle />
     <slot />
+    <Footer />
   </body>
 </html>
 <style is:global>

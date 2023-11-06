@@ -5,13 +5,13 @@ const MagazineHero = (props: Props) => {
     <section className="bg-[#FCF6ED] rounded-tl-xl rounded-bl-xl rounded-br-xl p-10 flex justify-between mt-12">
       <div>
         <h1 className="text-4xl  font-extralight text-[#6b4710] mb-3 tracking-wide">
-          1. Sayi
+          2. Sayı
         </h1>
-        <h2 className="text-4xl font-light tracking-wide">Ekim 2023</h2>
+        <h2 className="text-4xl font-light tracking-wide">Kasım 2023</h2>
         <p className="my-6 text-[#6b4710]  font-light">
-          Falan Dergi ilk sayısıyla karşınızda!
+          Falan Dergi yeni sayısıyla karşınızda.
         </p>
-        <a href="/dergiler/4mPwNvLw8792jDNmtDNel2">
+        <a href="/dergiler/4D7zbSgjG5x98HrtGrNoZN">
           <button className="bg-black rounded-br-lg px-4 py-2 text-white hover:opacity-70">
             Dergiyi incele
           </button>

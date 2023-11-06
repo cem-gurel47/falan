@@ -21,7 +21,7 @@ const HeroSection = ({ content }: Props) => {
           {heroTitle}
         </h1>
         <p className="text-gray-200">{heroDescription}</p>
-        <a href="/dergiler/4mPwNvLw8792jDNmtDNel2">
+        <a href="/dergiler/4D7zbSgjG5x98HrtGrNoZN">
           <button className="mt-6 bg-white text-black px-4 py-2 rounded-md hover:bg-zinc-200 transition-all ease-in-out duration-150">
             Dergiyi Oku
           </button>

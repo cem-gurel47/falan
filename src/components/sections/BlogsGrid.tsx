@@ -28,7 +28,7 @@ export default function AuthorsSection({ blogs }: Props) {
           <path d="M14 17.75V21" />
           <path d="M7 18a6 6 0 0 0 3.84-10.61" />
         </svg>
-        <h1 className="my-4">Gösterilecek yazi bulunamadi.</h1>
+        <h1 className="my-4">Gösterilecek yazı bulunamadı.</h1>
         <a
           className="bg-black border-2 mt-2 border-black p-3 rounded-md text-white text-center transition-all ease-in-out duration-150 hover:bg-white hover:text-black"
           href="/yazarlar"
