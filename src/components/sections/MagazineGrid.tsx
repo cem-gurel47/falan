@@ -20,7 +20,7 @@ const MagazineGrid = ({ magazines }: Props) => {
           <MagazineCard
             key={magazine.sys.id}
             magazine={magazine}
-            index={index + 1}
+            index={magazines.items.length - index}
           />
         ))}
       </div>

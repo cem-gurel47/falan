@@ -13,7 +13,7 @@ const MagazineCard = ({ magazine, index }: Props) => {
         <img
           src={fields.coverImage.fields.file?.url as string}
           alt="magazine"
-          className="w-full h-auto rounded-br-2xl mb-2 shadow-md"
+          className="w-full h-96 object-cover rounded-br-2xl mb-2 shadow-md"
         />
         <p className=" font-medium tracking-wider hover:underline underline-offset-2">
           {fields.name}
