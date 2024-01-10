@@ -25,7 +25,7 @@ const ArticleCard = ({ blog }: Props) => {
     fields!;
   const { id, createdAt } = sys;
   return (
-    <article className="flex flex-col items-start justify-between group">
+    <article className="flex flex-col items-start justify-between group overflow-hidden">
       <a
         href={`/yazilar/${id}`}
         className="w-full"
@@ -39,7 +39,7 @@ const ArticleCard = ({ blog }: Props) => {
           />
           <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-gray-900/10" />
         </div>
-        <div className="max-w-xl flex-1">
+        <div className="flex-1 max-w-full">
           <div className="mt-6 mb-4 text-xs">
             <a
               href={`/kategoriler/${category}`}

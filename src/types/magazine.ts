@@ -7,6 +7,7 @@ export type Magazine = {
     magazinePdf: Asset;
     coverImage: Asset;
     blogPosts: Blog[];
+    calameoLink: string;
   };
   metadata: {};
   sys: {

@@ -2,7 +2,6 @@
 import Layout from "../../layouts/Layout.astro";
 import { contentfulClient } from "../../lib/contentful";
 import type { Magazine } from "../../types/magazine";
-import RedirectToPdf from "@/components/RedirectToPdf";
 import PdfViewer from "@/components/pdfViewer";
 // Import the styles
 // import type { ContentfulResponse } from "@/types/magazine";
@@ -43,15 +42,8 @@ const { fields } = magazine;
 ---
 
 <Layout title={fields.name} pathname="/dergiler">
-  <main class="pt-4 px-4 sm:px-4 md:px-12 lg:px-24">
-    <RedirectToPdf
-      client:only
-      pdfUrl={fields.magazinePdf.fields.file?.url as string}
-    />
+  <main class="">
     <h1 class="text-2xl font-bold text-center mb-4">{fields.name}</h1>
-    <PdfViewer
-      pdfUrl={fields.magazinePdf.fields.file?.url as string}
-      client:load
-    />
+    <PdfViewer pdfUrl={fields.calameoLink} client:only />
   </main>
 </Layout>
