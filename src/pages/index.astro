@@ -1,6 +1,6 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import { content } from "@/store/store";
+import { content, latestMagazineId } from "@/store/store";
 import type { Content } from "@/types/content";
 
 import BlogsGrid from "@/components/sections/BlogsGrid";
@@ -23,24 +23,36 @@ const siteContentPromise = contentfulClient.getEntries({
   content_type: "siteContent",
 });
 
-const [blogs, siteContent, mostRecentBlogs] = await Promise.all([
-  blogsPromise,
-  siteContentPromise,
-  mostRecentBlogsPromise,
-]);
+const latestMagazinePromise = contentfulClient.getEntries({
+  content_type: "magazine",
+  order: [`-sys.createdAt`],
+  limit: 1,
+});
+
+const [blogs, siteContent, mostRecentBlogs, latestMagazine] = await Promise.all(
+  [
+    blogsPromise,
+    siteContentPromise,
+    mostRecentBlogsPromise,
+    latestMagazinePromise,
+  ]
+);
 
 // @ts-ignore
 const contentValue: Content = siteContent.items[0];
 
-// @ts-ignore
 content.set(contentValue);
+latestMagazineId.set(latestMagazine.items[0].sys.id);
 
 export const prerender = true;
 ---
 
 <Layout title="Falan Dergi" pathname="/">
   <main>
-    <HeroSection content={contentValue} />
+    <HeroSection
+      content={contentValue}
+      latestMagazineId={latestMagazine.items[0].sys.id}
+    />
     <div class="relative px-24">
       <div class="absolute inset-0 flex items-center" aria-hidden="true">
         <div class="w-full border-t border-gray-300"></div>

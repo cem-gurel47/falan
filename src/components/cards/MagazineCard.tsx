@@ -8,14 +8,14 @@ type Props = {
 const MagazineCard = ({ magazine, index }: Props) => {
   const { fields, sys } = magazine;
   return (
-    <a href={`/dergiler/${sys.id}`}>
-      <div className="flex flex-col">
+    <a href={`/dergiler/${sys.id}`} className="group">
+      <div className="transition-all duration-150 ease-in-out flex flex-col group-hover:opacity-90">
         <img
           src={fields.coverImage.fields.file?.url as string}
           alt="magazine"
-          className="w-full h-96 object-cover rounded-br-2xl mb-2 shadow-md"
+          className="w-full h-96 object-contain rounded-br-2xl mb-2 shadow-md"
         />
-        <p className=" font-medium tracking-wider hover:underline underline-offset-2">
+        <p className=" font-medium tracking-wider group-hover:underline underline-offset-2">
           {fields.name}
         </p>
         <div className="flex items-baseline gap-1">

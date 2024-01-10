@@ -25,7 +25,7 @@ const ArticleCard = ({ blog }: Props) => {
     fields!;
   const { id, createdAt } = sys;
   return (
-    <article className="flex flex-col items-start justify-between">
+    <article className="flex flex-col items-start justify-between group">
       <a
         href={`/yazilar/${id}`}
         className="w-full"
@@ -35,7 +35,7 @@ const ArticleCard = ({ blog }: Props) => {
           <img
             src={image.fields!.file!.url as string}
             alt={title}
-            className="aspect-[16/9] w-full rounded-2xl bg-gray-100 object-cover sm:aspect-[2/1] lg:aspect-[3/2]"
+            className="aspect-[16/9] w-full rounded-2xl bg-gray-100 object-cover sm:aspect-[2/1] lg:aspect-[3/2] group-hover:opacity-90 transition-all duration-150 ease-in-out"
           />
           <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-gray-900/10" />
         </div>
@@ -48,7 +48,7 @@ const ArticleCard = ({ blog }: Props) => {
               {category}
             </a>
           </div>
-          <div className="group relative">
+          <div className="relative">
             <h3 className="mt-3 text-lg font-semibold line-clamp-2 leading-6 md:min-h-[48px] text-gray-900 group-hover:text-gray-600 hover:underline under underline-offset-4 decoration-black">
               <a href={`/yazilar/${id}`}>
                 <span className="absolute inset-0" />

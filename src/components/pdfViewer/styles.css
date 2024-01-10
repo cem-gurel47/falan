@@ -1,0 +1,19 @@
+.rpv-default-layout__container {
+  border: none;
+}
+
+.rpv-default-layout__container {
+  border: none !important;
+}
+
+.rpv-default-layout__body {
+  border-radius: 30px;
+}
+
+.rpv-default-layout__toolbar {
+  border-radius: 30px;
+}
+
+.rpv-toolbar__left {
+  visibility: hidden;
+}

@@ -3,6 +3,8 @@ import Layout from "../../layouts/Layout.astro";
 import { contentfulClient } from "../../lib/contentful";
 import type { Magazine } from "../../types/magazine";
 import RedirectToPdf from "@/components/RedirectToPdf";
+import PdfViewer from "@/components/PdfViewer";
+// Import the styles
 // import type { ContentfulResponse } from "@/types/magazine";
 
 // @ts-ignore
@@ -29,6 +31,15 @@ const magazine: Magazine = await contentfulClient.getEntry(
   magazineId as string
 );
 const { fields } = magazine;
+
+// <iframe
+//       src={fields.magazinePdf.fields.file?.url as string}
+//       class="w-full h-screen"
+//     >
+//       <!-- Fallback content for browsers that don't support iframes --> <p>It
+//       appears you don't have a PDF plugin for this browser. <a
+//       href="path-to-your-pdf-file.pdf">Click here to download the PDF</a>.</p>
+//     </iframe>
 ---
 
 <Layout title={fields.name} pathname="/dergiler">
@@ -38,13 +49,9 @@ const { fields } = magazine;
       pdfUrl={fields.magazinePdf.fields.file?.url as string}
     />
     <h1 class="text-2xl font-bold text-center mb-4">{fields.name}</h1>
-    <iframe
-      src={fields.magazinePdf.fields.file?.url as string}
-      class="w-full h-screen"
-    >
-      <!-- Fallback content for browsers that don't support iframes --> <p>It
-      appears you don't have a PDF plugin for this browser. <a
-      href="path-to-your-pdf-file.pdf">Click here to download the PDF</a>.</p>
-    </iframe>
+    <PdfViewer
+      pdfUrl={fields.magazinePdf.fields.file?.url as string}
+      client:load
+    />
   </main>
 </Layout>

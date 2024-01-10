@@ -5,6 +5,9 @@ export type Content = {
     heroImage: Asset;
     heroTitle: string;
     heroDescription: string;
+    magazinePagePrimaryTitle: string;
+    magazinePageSecondaryText: string;
+    magazinePageDescription: string;
   };
   metadata: {};
   sys: {

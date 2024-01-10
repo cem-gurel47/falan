@@ -9,4 +9,6 @@ export const magazineYearFilter = atom(null);
 
 export const tempAuthor = atom(null);
 
+export const latestMagazineId = atom<null | string>(null);
+
 export const content = atom<null | Content>(null);
